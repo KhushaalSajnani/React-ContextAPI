@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import Login from "./Components/Login";
+import {Nav} from "./Components/Nav";
+import {Exists} from "./Components/Exists";
+import {useContext} from "react";
+import {AuthContextV2} from "./Store/auth-context-v2";
+
 
 function App() {
+  const context = useContext(AuthContextV2);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+            <Nav/>
+            {context.isUserLoggedIn?<Exists/>:<Login/>}
     </div>
   );
 }
